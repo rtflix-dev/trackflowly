@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TrackFlowly | Digital Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#000;--card:#fff;--mut:#667085;--line:#e9e9ec;--soft:#f4f5f7;--btn:#000;--btnfg:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--fg:#fff;--card:#111;--mut:#9aa0ab;--line:#24262b;--soft:#1a1b1f;--btn:#fff;--btnfg:#000}}
+:root[data-theme="dark"]{--bg:#000;--fg:#fff;--card:#111;--mut:#9aa0ab;--line:#24262b;--soft:#1a1b1f;--btn:#fff;--btnfg:#000}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Poppins,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #4e8df5;outline-offset:2px}
+.bar{background:#000;color:#fff;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:500;padding:11px 0}
+.mq{display:inline-block;animation:mq 30s linear infinite}
+.mq span{padding:0 26px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq{animation:none}}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:10px 12px}
+.r{display:flex;justify-content:flex-end}
+.ic{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;position:relative}
+.ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cb b{position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--btn);color:var(--btnfg);font-size:11px;display:grid;place-items:center}
+.logo{font-weight:800;font-size:26px;letter-spacing:-.085em;text-transform:uppercase}
+.sbar{display:none;padding:10px 16px;border-bottom:1px solid var(--line)}
+.sbar.on{display:block}
+input{width:100%;padding:14px;margin:6px 0;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--fg);font:inherit;font-size:15px}
+h1.t{font-size:clamp(32px,8vw,46px);font-weight:800;text-align:center;margin:44px 0 8px}
+.sub{text-align:center;color:var(--mut);font-size:14px;margin:0 20px 22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 14px 20px}
+.chip{border:1px solid var(--line);padding:9px 16px;border-radius:30px;font-size:13px;font-weight:500}
+.chip.on{background:var(--btn);color:var(--btnfg);border-color:var(--btn)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:0 14px;max-width:1150px;margin:auto}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:12px 12px 16px;text-align:center;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.art{position:relative;height:150px;border-radius:15px;display:grid;place-items:center;margin-bottom:14px}
+.tag{position:absolute;top:9px;left:9px;background:#fff;color:#10213d;font-size:10px;font-weight:600;padding:4px 9px;border-radius:20px}
+.paper{width:104px;height:116px;background:#fff;border-radius:10px;padding:11px;transform:rotate(-4deg);box-shadow:0 10px 24px rgba(16,33,61,.16)}
+.paper b{display:block;font-size:11px;line-height:1.35;color:#10213d}
+.paper i{display:block;height:5px;background:#e7edf7;border-radius:5px;margin:8px 0}
+.sq{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.sq s{height:14px;background:var(--s);border-radius:4px}
+.card h3{font-size:15px;font-weight:600;margin:0 0 6px}
+.d{font-size:12px;color:var(--mut);line-height:1.5;margin:0 0 8px;flex:1}
+.pr{font-weight:600;font-size:16px;margin-bottom:12px}
+.b1,.b2{width:100%;padding:12px 8px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
+.b1{border:2px solid var(--fg);border-radius:14px;margin-bottom:10px}
+.b2{background:var(--btn);color:var(--btnfg);border-radius:30px;padding:14px 8px}
+.b2:disabled{opacity:.35;cursor:not-allowed}
+.b2 svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.empty{text-align:center;color:var(--mut)}
+.strip{margin-top:56px;background:var(--btn);color:var(--btnfg);font-weight:800;font-size:clamp(22px,6vw,34px);letter-spacing:.03em;padding:14px 0;overflow:hidden;white-space:nowrap}
+.sec{max-width:760px;margin:56px auto 0;padding:0 16px}
+.sec h2{font-size:clamp(24px,6vw,32px);font-weight:800;text-align:center;margin:0 0 18px}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:15px 10px;border-bottom:1px solid var(--line);text-align:center}
+th:first-child,td:first-child{text-align:left}
+th,td:nth-child(2){font-weight:800}
+.feat{background:var(--btn);color:var(--btnfg);border-radius:26px;padding:36px 22px;text-align:center}
+.feat h2{margin-bottom:10px}
+.feat p{margin:0 auto;max-width:420px;font-size:14px;line-height:1.7;opacity:.8}
+.feat .b2{background:var(--btnfg);color:var(--btn);max-width:260px;margin:22px auto 0}
+.contact{text-align:center}
+.contact p{color:var(--mut);font-size:14px;margin:0 0 16px}
+.links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.links a{border:2px solid var(--fg);border-radius:30px;padding:11px 20px;font-size:14px;font-weight:600}
+footer{margin-top:56px;background:#000;color:#fff;border-top:1px solid #24262b;padding:44px 22px 0}
+footer .logo{display:block;text-align:center;font-size:34px}
+#nf{max-width:520px;margin:34px auto 0}
+#nf h2{margin:0 0 12px;font-size:24px;font-weight:600}
+#nf p{margin:0 0 18px;color:#c8ccd4;font-size:15px;line-height:1.7}
+#nf input[type=email]{background:transparent;border-color:#5b5f68;color:#fff}
+.su{width:100%;margin-top:10px;padding:15px;border-radius:14px;background:#faf9f6;color:#000;font-weight:600;font-size:15px}
+.soc{display:flex;justify-content:center;gap:26px;padding:32px 0}
+.soc a{display:grid;place-items:center;width:36px;height:36px}
+.soc svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cp{margin:0 -22px;border-top:1px solid #24262b;padding:22px 0 28px;text-align:center;font-size:13px;color:#9aa0ab}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.ov.on{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;bottom:0;width:min(400px,92vw);background:var(--bg);z-index:50;transition:transform .3s;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px calc(env(safe-area-inset-bottom,0px) + 18px);display:flex;flex-direction:column;overflow-y:auto}
+#menu{left:0;transform:translateX(-100%)}
+#cart{right:0;transform:translateX(100%)}
+.dr.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;margin:0 -20px;padding:0 20px 14px;border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-size:30px;font-weight:800}
+.nav{margin:0 -20px;padding:6px 0;border-bottom:1px solid var(--line)}
+.nav a,.nav button{display:block;width:100%;text-align:left;padding:16px 20px;font-size:18px}
+.nav a.on{background:var(--soft)}
+#cl{flex:1;display:flex;flex-direction:column}
+.ec{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center}
+.ec h2{margin:0;font-size:30px;font-weight:800}
+.ec .b2{max-width:300px;border-radius:14px}
+.tcard{background:var(--soft);border-radius:26px;padding:30px 22px;text-align:center;min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tcard .stars{letter-spacing:3px;font-size:18px}
+.tcard h3{margin:12px 0 8px;font-size:17px;font-weight:600}
+.tcard p{margin:0;color:var(--mut);font-size:14px;line-height:1.7;max-width:460px}
+.tnav{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:18px;font-size:14px}
+.tnav button{font-size:28px;line-height:1;padding:4px 12px;color:var(--mut)}
+.up{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);width:52px;height:52px;border-radius:50%;background:#17181a;color:#fff;border:1px solid #2c2e33;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:25}
+.up.on{opacity:1;pointer-events:auto}
+.up svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.it{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+.it small{display:block;color:var(--mut);margin-top:2px}
+.qt{display:flex;align-items:center;gap:10px}
+.qt button{width:30px;height:30px;border:1px solid var(--line);border-radius:50%}
+.sum{display:flex;justify-content:space-between;font-size:16px;font-weight:600;padding:18px 0}
+.mt{color:var(--mut);font-size:14px;line-height:1.6}
+.lk{display:block;margin:14px auto 0;font-size:13px;color:var(--mut)}
+textarea{width:100%;padding:14px;margin:8px 0 4px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--fg);font:inherit;font-size:14px;line-height:1.6;resize:none}
+#cd .b2{margin-top:10px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translate(-50%,16px);background:var(--btn);color:var(--btnfg);padding:12px 18px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90%;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="bar"><div class="mq" data-t="⚡ Digital downloads. Pay once, use forever."></div></div>
+<header>
+  <div><button class="ic" id="mb" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+  <a class="logo" href="#top" aria-label="TrackFlowly">TrackFlowly</a>
+  <div class="r">
+    <button class="ic" id="sb" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button class="ic cb" id="cb" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2.5l2 11h10l2-8H7"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><b id="cn" hidden>0</b></button>
+  </div>
+</header>
+<div class="sbar" id="sbar"><input id="q" type="search" placeholder="Search products"></div>
+
+<main id="top">
+  <h1 class="t" id="shop">PRODUCTS</h1>
+  <p class="sub">Simple digital planners and trackers to build better habits.</p>
+  <div class="chips" id="chips">
+    <button class="chip on" data-c="all">All</button>
+    <button class="chip" data-c="habits">Habit trackers</button>
+    <button class="chip" data-c="planning">Planners</button>
+    <button class="chip" data-c="focus">Focus</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No products match your search.</p>
+
+  <div class="strip"><div class="mq" data-t="NEW DROP SOON"></div></div>
+
+  <section class="sec" id="why">
+    <h2>Why TrackFlowly</h2>
+    <div class="wrap"><table>
+      <tr><th></th><th>TrackFlowly</th><th>Others</th></tr>
+      <tr><td>Simple, useful designs</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Digital download, no shipping</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Made for everyday progress</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Pay once, keep it</td><td>✓</td><td>✕</td></tr>
+    </table></div>
+  </section>
+
+  <section class="sec">
+    <div class="feat">
+      <h2>Small steps. Clear progress.</h2>
+      <p>Start with the Daily Habit Tracker and keep your routines in sight, one day at a time.</p>
+      <button class="b2" id="featbuy">Buy the Habit Tracker</button>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews" hidden>
+    <h2>Testimonials</h2>
+    <div class="tcard" id="tc"></div>
+    <div class="tnav"><button id="tp" aria-label="Previous review">‹</button><span id="tn"></span><button id="tx" aria-label="Next review">›</button></div>
+  </section>
+
+  <section class="sec contact" id="contact">
+    <h2>Need help choosing?</h2>
+    <p>Send us a message and we’ll point you to the right tool.</p>
+    <div class="links">
+      <a href="https://ig.me/m/trackflowly" target="_blank" rel="noopener">Message us on Instagram</a>
+      <a id="wa" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="logo" href="#top" aria-label="TrackFlowly">TrackFlowly</a>
+  <form id="nf" name="newsletter" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="newsletter">
+    <h2>Join our email list</h2>
+    <p>Get updates about new templates and practical planning ideas.</p>
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <button class="su" type="submit">Sign up</button>
+  </form>
+  <div class="soc"></div>
+  <div class="cp">© <span id="y"></span> TrackFlowly</div>
+</footer>
+
+<div class="ov" id="ov"></div>
+
+<aside class="dr" id="menu" aria-label="Menu">
+  <div class="dh"><h2>Menu</h2><button class="ic" data-x aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <nav class="nav">
+    <a href="#top" class="on" data-c="all">Home</a>
+    <a href="#shop" data-c="habits">Habit trackers</a>
+    <a href="#shop" data-c="planning">Planners</a>
+    <a href="#shop" data-c="focus">Focus</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav"><button id="ms">Search</button></div>
+  <div class="soc"></div>
+</aside>
+
+<aside class="dr" id="cart" aria-label="Cart">
+  <div class="dh"><h2 id="ct">Your cart</h2><button class="ic" data-x aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div id="cl">
+    <div class="ec" id="ec"><h2>Your cart is empty</h2><button class="b2" data-x>Continue shopping</button></div>
+    <div id="full">
+      <div id="items"></div>
+      <div class="sum"><span>Subtotal</span><span id="tot"></span></div>
+      <button class="b2" id="go">Checkout</button>
+    </div>
+  </div>
+  <form id="cf" hidden>
+    <p class="mt">Enter your details. We’ll confirm your order and payment in chat.</p>
+    <input id="nm" placeholder="Full name" autocomplete="name" required>
+    <input id="ph" type="email" placeholder="Email (optional)" autocomplete="email">
+    <div class="sum"><span>Total</span><span id="tot2"></span></div>
+    <button class="b2" type="submit">Place order</button>
+    <button class="lk" type="button" id="bk">Back to cart</button>
+  </form>
+  <div id="cd" hidden>
+    <p class="mt" id="cs"></p>
+    <textarea id="om" rows="6" readonly aria-label="Order message"></textarea>
+    <a class="b2" href="https://ig.me/m/trackflowly" target="_blank" rel="noopener">Open Instagram chat</a>
+    <a class="b2" id="wa2" href="#" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+    <button class="lk" type="button" id="cp2">Copy message again</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+<button class="up" id="up" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+
+<script>
+/* CONFIG
+   wa: WhatsApp number with country code, digits only (format: 2126XXXXXXXX). Optional: adds a WhatsApp button to orders
+   tt: your TikTok handle without @ (leave empty to hide the icon)
+   news: form endpoint for the email signup (Formspree URL, or "/" on Netlify) */
+const C = { wa: "", cur: "$", tt: "", news: "" };
+
+/* PRODUCTS: edit names, prices, descriptions here */
+const P = [
+  { id: 1, n: "Daily Habit Tracker", t: ["DAILY", "HABIT TRACKER"], c: "habits", p: 4, d: "A simple layout to keep your routines in sight.", tag: "Best start", bg: "#eaf1ff", sq: "#dbe8ff" },
+  { id: 2, n: "Weekly Planner", t: ["WEEKLY", "PLANNER"], c: "planning", p: 5, d: "Map out priorities and make room for what matters.", bg: "#e7f8f1", sq: "#c6f0df" },
+  { id: 3, n: "Focus Session Sheet", t: ["FOCUS", "SESSION"], c: "focus", p: 3, d: "A distraction-light page for your next task.", bg: "#fff2e5", sq: "#ffdfbd" },
+  { id: 4, n: "Monthly Reset Kit", t: ["MONTHLY", "RESET"], c: "planning", p: 6, d: "Review your month and set your next intentions.", bg: "#f3ebff", sq: "#e4d4ff" }
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const fm = n => C.cur + n.toFixed(2);
+const CI = '<svg viewBox="0 0 24 24"><path d="M3 4h2.5l2 11h10l2-8H7"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg>';
+let cart = {}, cat = "all", qs = "", tt;
+
+try {
+  const s = JSON.parse(localStorage.getItem("tf_cart") || "{}") || {};
+  Object.keys(s).forEach(k => { if (P.some(p => p.id == k) && s[k] > 0) cart[k] = Math.floor(s[k]); });
+} catch (e) { cart = {}; }
+const save = () => { try { localStorage.setItem("tf_cart", JSON.stringify(cart)); } catch (e) {} };
+
+$$(".mq").forEach(m => m.innerHTML = ("<span>" + m.dataset.t + "</span>").repeat(16));
+$("#y").textContent = new Date().getFullYear();
+if (C.wa) { $("#wa").hidden = false; $("#wa").href = "https://wa.me/" + C.wa; }
+
+function toast(m) {
+  const t = $("#toast");
+  t.textContent = m; t.classList.add("on");
+  clearTimeout(tt); tt = setTimeout(() => t.classList.remove("on"), 2200);
+}
+
+function draw() {
+  const L = P.filter(p => (cat == "all" || p.c == cat) && (p.n + " " + p.d).toLowerCase().includes(qs));
+  $("#grid").innerHTML = L.map(p =>
+    `<article class="card"><div class="art" style="background:${p.bg}">${p.tag ? `<span class="tag">${p.tag}</span>` : ""}<div class="paper"><b>${p.t[0]}<br>${p.t[1]}</b><i></i><i></i><div class="sq" style="--s:${p.sq}"><s></s><s></s><s></s><s></s><s></s><s></s></div></div></div><h3>${p.n}</h3><p class="d">${p.d}</p><div class="pr">${fm(p.p)}</div><button class="b1" data-a="add" data-id="${p.id}">Add to cart</button><button class="b2" data-a="buy" data-id="${p.id}">${CI} Buy now</button></article>`
+  ).join("");
+  $("#empty").hidden = L.length > 0;
+}
+
+function drawCart() {
+  const ids = Object.keys(cart).map(Number);
+  const n = ids.reduce((s, i) => s + cart[i], 0);
+  const total = ids.reduce((s, i) => s + cart[i] * P.find(p => p.id == i).p, 0);
+  $("#cn").textContent = n; $("#cn").hidden = !n;
+  $("#items").innerHTML = ids.length ? ids.map(i => {
+    const p = P.find(x => x.id == i);
+    return `<div class="it"><div><b>${p.n}</b><small>${fm(p.p)}</small></div><div class="qt"><button data-q="-1" data-id="${i}" aria-label="Remove one">−</button><span>${cart[i]}</span><button data-q="1" data-id="${i}" aria-label="Add one">+</button></div></div>`;
+  }).join("") : "";
+  $("#ec").hidden = !!n; $("#full").hidden = !n; $("#ct").style.visibility = n ? "" : "hidden";
+  $("#tot").textContent = $("#tot2").textContent = fm(total);
+  $("#go").disabled = !n;
+}
+
+function add(id, n = 1) {
+  cart[id] = Math.max(0, (cart[id] || 0) + n);
+  if (!cart[id]) delete cart[id];
+  save(); drawCart();
+}
+
+function openD(id) {
+  $$(".dr").forEach(d => d.classList.toggle("on", d.id == id));
+  $("#ov").classList.add("on");
+}
+function closeD() {
+  $$(".dr").forEach(d => d.classList.remove("on"));
+  $("#ov").classList.remove("on");
+  $("#cl").hidden = false; $("#cf").hidden = true; $("#cd").hidden = true;
+}
+function checkout() { $("#cl").hidden = true; $("#cf").hidden = false; }
+function buy(id) { add(id); openD("cart"); checkout(); }
+
+$("#grid").onclick = e => {
+  const b = e.target.closest("[data-a]");
+  if (!b) return;
+  const id = +b.dataset.id;
+  if (b.dataset.a == "buy") buy(id); else { add(id); toast("Added to cart"); }
+};
+$("#featbuy").onclick = () => buy(1);
+$("#items").onclick = e => { const b = e.target.closest("[data-q]"); if (b) add(+b.dataset.id, +b.dataset.q); };
+$("#chips").onclick = e => {
+  const b = e.target.closest("[data-c]");
+  if (!b) return;
+  cat = b.dataset.c;
+  $$(".chip").forEach(c => c.classList.toggle("on", c == b));
+  draw();
+};
+$("#sb").onclick = () => { $("#sbar").classList.toggle("on"); $("#q").focus(); };
+$("#q").oninput = e => { qs = e.target.value.trim().toLowerCase(); draw(); };
+$("#mb").onclick = () => openD("menu");
+$("#cb").onclick = () => openD("cart");
+$("#ov").onclick = closeD;
+$$("[data-x]").forEach(b => b.onclick = closeD);
+$("#menu").onclick = e => {
+  if (e.target.closest("#ms")) { closeD(); $("#sbar").classList.add("on"); $("#q").focus(); return; }
+  const a = e.target.closest("a");
+  if (!a) return;
+  if (a.closest(".nav")) {
+    $$("#menu .nav a").forEach(x => x.classList.toggle("on", x == a));
+    if (a.dataset.c) { cat = a.dataset.c; $$(".chip").forEach(c => c.classList.toggle("on", c.dataset.c == cat)); draw(); }
+  }
+  closeD();
+};
+$("#go").onclick = checkout;
+$("#bk").onclick = () => { $("#cl").hidden = false; $("#cf").hidden = true; };
+
+$("#cf").onsubmit = e => {
+  e.preventDefault();
+  const ids = Object.keys(cart);
+  if (!ids.length) { toast("Your cart is empty"); return; }
+  const lines = ids.map(i => { const p = P.find(x => x.id == i); return "- " + cart[i] + "× " + p.n + " (" + fm(cart[i] * p.p) + ")"; });
+  const msg = "Hi TrackFlowly! I’d like to order:\n" + lines.join("\n") + "\nTotal: " + $("#tot").textContent + "\nName: " + $("#nm").value + ($("#ph").value ? "\nEmail: " + $("#ph").value : "");
+  $("#om").value = msg;
+  $("#wa2").hidden = !C.wa;
+  if (C.wa) $("#wa2").href = "https://wa.me/" + C.wa + "?text=" + encodeURIComponent(msg);
+  $("#cf").hidden = true; $("#cd").hidden = false;
+  copyMsg();
+};
+
+const IG = 'https://instagram.com/trackflowly';
+const ICO = {
+  ig: '<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>',
+  tt: '<svg viewBox="0 0 24 24"><path d="M14 3.5v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3.5c.4 2.3 2 3.8 4.5 4"/></svg>'
+};
+$$('.soc').forEach(s => s.innerHTML =
+  `<a href="${IG}" target="_blank" rel="noopener" aria-label="Instagram">${ICO.ig}</a>` +
+  (C.tt ? `<a href="https://tiktok.com/@${C.tt}" target="_blank" rel="noopener" aria-label="TikTok">${ICO.tt}</a>` : ''));
+
+$('#nf').onsubmit = async e => {
+  e.preventDefault();
+  if (!C.news) { toast('Signup isn’t connected yet. Add a form endpoint in C.news.'); return; }
+  try {
+    const r = await fetch(C.news, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } });
+    if (!r.ok) throw new Error('fail');
+    e.target.reset(); toast('You’re on the list. Thank you!');
+  } catch (err) { toast('Couldn’t sign you up. Please try again.'); }
+};
+
+/* REVIEWS: replace these samples with real customer reviews (use [] to hide the section) */
+const T = [
+  { n: 'Customer 1', q: 'Sample review. Replace it with a real customer review.' },
+  { n: 'Customer 2', q: 'Sample review. Replace it with a real customer review.' },
+  { n: 'Customer 3', q: 'Sample review. Replace it with a real customer review.' }
+];
+let ti = 0;
+function drawT() {
+  if (!T.length) return;
+  $('#reviews').hidden = false;
+  $('#tc').innerHTML = `<div class="stars">★★★★★</div><h3>${T[ti].n}</h3><p>“${T[ti].q}”</p>`;
+  $('#tn').textContent = (ti + 1) + ' / ' + T.length;
+}
+$('#tp').onclick = () => { ti = (ti + T.length - 1) % T.length; drawT(); };
+$('#tx').onclick = () => { ti = (ti + 1) % T.length; drawT(); };
+
+window.addEventListener('scroll', () => $('#up').classList.toggle('on', window.scrollY > 500), { passive: true });
+$('#up').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+async function copyMsg() {
+  try { await navigator.clipboard.writeText($('#om').value); $('#cs').textContent = 'Order message copied. Open our Instagram chat and paste it to confirm your order and payment.'; }
+  catch (e) { $('#om').select(); $('#cs').textContent = 'Copy the message below, then paste it in our Instagram chat to confirm your order and payment.'; }
+}
+$('#cp2').onclick = copyMsg;
+
+draw(); drawCart(); drawT();
+</script>
+</body>
+</html>
